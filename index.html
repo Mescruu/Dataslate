@@ -134,7 +134,11 @@
         document.addEventListener("DOMContentLoaded", function () { // po załadowaniu dokumentu
             const selectElement = document.getElementById('hidden-textarea');
 
-
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset === 0) {
+                    location.reload();
+                }
+            });
                 // Get the container element
                 const glitchHeaderContainer = document.getElementById('glitch-header-container');
 
