@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./source/css/glitch.css">
     <link rel="stylesheet" href="./source/css/img_glith.css">
     <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
 
         body {
@@ -134,6 +135,8 @@
         document.addEventListener("DOMContentLoaded", function () { // po załadowaniu dokumentu
             const selectElement = document.getElementById('hidden-textarea');
 
+
+
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset === 0) {
                     location.reload();
@@ -149,7 +152,11 @@
 
                 debugger;
 
-                let text =  document.querySelector('#hidden-text').textContent;
+            (async() => {
+                const res = await axios.get("https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt")
+                console.log(res.data)
+
+                let text = res.data;
 
                 let arrayText = text.split('\n');
 
@@ -158,13 +165,13 @@
                     debugger;
                     text = text.replace(/\r?\n/g, '<br /><br />');
 
-                // Create a new header element
-                const headerElement = document.createElement('h2');
+                    // Create a new header element
+                    const headerElement = document.createElement('h2');
                     // Set the id attribute of the span element
                     headerElement.setAttribute('class', 'hero glitch layers');
 
-                // Create a new span element
-                const spanElement = document.createElement('span');
+                    // Create a new span element
+                    const spanElement = document.createElement('span');
                     spanElement.innerHTML = text
                     // Append the span element to the div element
                     headerElement.appendChild(spanElement);
@@ -174,6 +181,11 @@
                     headerElement.setAttribute("data-text", text);
 
                 });
+
+
+            })()
+
+
 
 
             const imgElement = document.getElementById('glitch-img');
