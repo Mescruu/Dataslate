@@ -1,4 +1,4 @@
-    Szybki test
+    Szybki test i drugi szybki test
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat, risus sed consequat vehicula, metus justo congue odio, quis pulvinar turpis nisl finibus felis. Nullam lectus lectus, viverra in varius in, finibus vitae tellus. Etiam dictum vel mi vel varius. Fusce venenatis dui quis tristique condimentum. Mauris facilisis viverra ullamcorper. Pellentesque luctus faucibus mi, quis lobortis mauris dignissim vitae. Etiam id turpis odio. Integer sed sapien quis diam pulvinar porttitor at facilisis diam.
 
