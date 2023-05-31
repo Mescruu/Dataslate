@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- FAVICON -->
+    <link rel="icon" href="http://www.scifill.com/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="http://www.scifill.com/favicon-32x32.png" type="image/png" sizes="32x32">
+    <title>DATASLATE</title>
+    <link href="./source/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./source/css/glitch.css">
+    <link rel="stylesheet" href="./source/css/img_glith.css">
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+    <style>
+
+        body {
+            background: url('./source/img/screen.jpg');
+            margin: 0;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+            background-position: 50% 0%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        section{
+            height: 100vh;
+            overflow-y: scroll;
+            box-shadow: 0 -5px 5px -5px #333;
+        }
+
+        section::-webkit-scrollbar {
+            z-index: 1000;
+            width: 2em;
+        }
+
+        section::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        section::-webkit-scrollbar-thumb {
+            background-color: rgba(30, 36, 42, 0.32);
+            outline: 1px solid rgba(112, 128, 144, 0.32);
+        }
+
+        .logo {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: 43%;
+            bottom: 5%;
+            overflow: hidden;
+        }
+
+        .logo img {
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            filter: brightness(1);
+            width: 200%;
+            height: 200vh;
+            background:  url('source/img/noise-transparent.png');
+            background-repeat: repeat;
+            animation: bg-animation .2s infinite;
+            opacity: 0.3;
+            visibility: visible;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        @keyframes bg-animation {
+            0% {
+                transform: translate(0, 0)
+            }
+            10% {
+                transform: translate(-5%, -5%)
+            }
+            20% {
+                transform: translate(-10%, 5%)
+            }
+            30% {
+                transform: translate(5%, -10%)
+            }
+            40% {
+                transform: translate(-5%, 15%)
+            }
+            50% {
+                transform: translate(-10%, 5%)
+            }
+            60% {
+                transform: translate(15%, 0)
+            }
+            70% {
+                transform: translate(0, 10%)
+            }
+            80% {
+                transform: translate(-15%, 0)
+            }
+            90% {
+                transform: translate(10%, 5%)
+            }
+            100% {
+                transform: translate(5%, 0)
+            }
+        }
+
+    </style>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () { // po załadowaniu dokumentu
+            const selectElement = document.getElementById('hidden-textarea');
+
+            selectElement.addEventListener('input', (event) => {
+
+                // Get the container element
+                const glitchHeaderContainer = document.getElementById('glitch-header-container');
+
+                // Remove all child elements from the div element
+                while (glitchHeaderContainer.firstChild) {
+                    glitchHeaderContainer.removeChild(glitchHeaderContainer.firstChild);
+                }
+
+                debugger;
+
+                let text = `${event.target.value}`;
+                let arrayText = text.split('\n');
+
+                arrayText.forEach(async (text) => {
+
+                    debugger;
+                    text = text.replace(/\r?\n/g, '<br /><br />');
+
+                // Create a new header element
+                const headerElement = document.createElement('h2');
+                    // Set the id attribute of the span element
+                    headerElement.setAttribute('class', 'hero glitch layers');
+
+                // Create a new span element
+                const spanElement = document.createElement('span');
+                    spanElement.innerHTML = text
+                    // Append the span element to the div element
+                    headerElement.appendChild(spanElement);
+
+                    // Append the header element to the container element
+                    glitchHeaderContainer.appendChild(headerElement);
+                    headerElement.setAttribute("data-text", text);
+
+                });
+            });
+
+
+            const imgElement = document.getElementById('glitch-img');
+            if(imgElement){
+                imgElement.onclick = function() {imgElement.remove()};
+            }
+
+            const soundElement = document.getElementById('sound-img');
+            if(soundElement){
+                soundElement.onclick = function() {soundElement.remove()};
+            }
+        });
+
+
+    </script>
+
+</head>
+<main id="main">
+    <div class="bg"></div>
+    <section>
+        <div class="hero-container" style="padding: 50px">
+            <h2 class="hero_header glitch layers" style="text-align: center" data-text="IMPERIUM DATA SLATE"><span>IMPERIUM DATA SLATE</span></h2>
+            <h2 class="hero_header glitch layers" style="text-align: center" data-text="Model. 75. RT-E1.41K"><span>Model. 75. RT-E1.41K</span></h2>
+        </div>
+
+        <div class="hero-container" id="glitch-header-container">
+            <h2 id="glitch-header" class="hero glitch layers" data-text=""><span id="glitch-span"> </span></h2>
+        </div>
+    </section>
+
+<!--    uncomment to show logo on screen bottom-->
+<!--    <div class="logo">-->
+<!--        <img src='source/img/logo.png' alt="">-->
+<!--    </div>-->
+
+<!--    uncomment to show image on center-->
+<!--    <div class="img_glitch" id="glitch-img">-->
+<!--        <img src='source/img/image.gif' alt="">-->
+<!--    </div>-->
+
+<!--    uncomment to show sound waves on center-->
+    <div class="img_glitch" style="height: 40%; width: 100%;" id="sound-img">
+        <img src='source/img/sound.gif' style="width: 60%;" alt="">
+    </div>
+
+
+    <textarea id="hidden-textarea" style="z-index: 1000;" spellcheck="false"></textarea>
+</main>
+</body>
+
+</html>
