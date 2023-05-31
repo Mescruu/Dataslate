@@ -136,7 +136,6 @@
             const selectElement = document.getElementById('hidden-textarea');
 
 
-
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset === 0) {
                     location.reload();
@@ -150,44 +149,6 @@
                     glitchHeaderContainer.removeChild(glitchHeaderContainer.firstChild);
                 }
 
-                debugger;
-
-            (async() => {
-                const res = await axios.get("https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt")
-                console.log(res.data)
-
-                let text = res.data;
-
-                let arrayText = text.split('\n');
-
-                arrayText.forEach(async (text) => {
-
-                    debugger;
-                    text = text.replace(/\r?\n/g, '<br /><br />');
-
-                    // Create a new header element
-                    const headerElement = document.createElement('h2');
-                    // Set the id attribute of the span element
-                    headerElement.setAttribute('class', 'hero glitch layers');
-
-                    // Create a new span element
-                    const spanElement = document.createElement('span');
-                    spanElement.innerHTML = text
-                    // Append the span element to the div element
-                    headerElement.appendChild(spanElement);
-
-                    // Append the header element to the container element
-                    glitchHeaderContainer.appendChild(headerElement);
-                    headerElement.setAttribute("data-text", text);
-
-                });
-
-
-            })()
-
-
-
-
             const imgElement = document.getElementById('glitch-img');
             if(imgElement){
                 imgElement.onclick = function() {imgElement.remove()};
@@ -197,6 +158,45 @@
             if(soundElement){
                 soundElement.onclick = function() {soundElement.remove()};
             }
+
+
+            async function getTxt() {
+                try {
+                    const response = await axios.get("https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt")
+
+                    let text =  response.data;
+
+                    let arrayText = text.split('\n');
+
+                    arrayText.forEach(async (text) => {
+
+                        text = text.replace(/\r?\n/g, '<br /><br />');
+
+                        // Create a new header element
+                        const headerElement = document.createElement('h2');
+                        // Set the id attribute of the span element
+                        headerElement.setAttribute('class', 'hero glitch layers');
+
+                        // Create a new span element
+                        const spanElement = document.createElement('span');
+                        spanElement.innerHTML = text
+                        // Append the span element to the div element
+                        headerElement.appendChild(spanElement);
+
+                        // Append the header element to the container element
+                        glitchHeaderContainer.appendChild(headerElement);
+                        headerElement.setAttribute("data-text", text);
+
+                    });
+
+                    console.log(response);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+            getTxt();
+
         });
 
 
