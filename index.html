@@ -38,19 +38,25 @@
             box-shadow: 0 -5px 5px -5px #333;
         }
 
-        section::-webkit-scrollbar {
-            z-index: 1000;
-            width: 2em;
+        @media only screen and (min-width: 800px) {
+
+
+            section::-webkit-scrollbar {
+                z-index: 1000;
+                width: 2em;
+            }
+
+            section::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            section::-webkit-scrollbar-thumb {
+                background-color: rgba(30, 36, 42, 0.32);
+                outline: 1px solid rgba(112, 128, 144, 0.32);
+            }
+
         }
 
-        section::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        }
-
-        section::-webkit-scrollbar-thumb {
-            background-color: rgba(30, 36, 42, 0.32);
-            outline: 1px solid rgba(112, 128, 144, 0.32);
-        }
 
         .logo {
             position: absolute;
@@ -216,7 +222,6 @@
         other new line
     </div>
 
-    <textarea id="hidden-textarea" style="z-index: 1000;" spellcheck="false"></textarea>
 </main>
 </body>
 
