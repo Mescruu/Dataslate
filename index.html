@@ -116,6 +116,17 @@
     </style>
     <script>
 
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'source/plik.txt', true);
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                let zmienna = this.responseText;
+                console.log(zmienna);
+            }
+        };
+        xhr.send();
+
+
         document.addEventListener("DOMContentLoaded", function () { // po załadowaniu dokumentu
             const selectElement = document.getElementById('hidden-textarea');
 
