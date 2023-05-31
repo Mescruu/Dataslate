@@ -34,6 +34,12 @@ section {
     }
 }
 
+@media only screen and (max-width: 800px) {
+    h2 {
+        padding-left: 20px;
+    }
+}
+
 .hero {
     font-size: clamp(20px, 0.05vw, 30px); /* lap !*
     /*font-size: clamp(30px, 2vw, 100px); !* tv !*!*/
@@ -548,6 +554,14 @@ Animacja niszczenia napisu
     position: relative;
     padding: 100px 0;
     text-align: center;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .hero-container {
+        position: relative;
+        text-align: center;
+    }
 }
 
 .environment {
