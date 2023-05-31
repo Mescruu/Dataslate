@@ -149,20 +149,19 @@
                     glitchHeaderContainer.removeChild(glitchHeaderContainer.firstChild);
                 }
 
-            const imgElement = document.getElementById('glitch-img');
-            if(imgElement){
-                imgElement.onclick = function() {imgElement.remove()};
-            }
+                debugger;
 
-            const soundElement = document.getElementById('sound-img');
-            if(soundElement){
-                soundElement.onclick = function() {soundElement.remove()};
-            }
-
+            (async() => {
+                const res = await axios.get("https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt")
+                console.log(res.data)
+            })()
 
             async function getTxt() {
                 try {
-                    const response = await axios.get("https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt")
+                    debugger;
+                    const response = await axios.get(
+                        "https://raw.githubusercontent.com/Mescruu/Dataslate/gh-pages/source/text.txt"+'?timestamp='+new Date().getTime()
+                    )
 
                     let text =  response.data;
 
@@ -197,6 +196,15 @@
 
             getTxt();
 
+            const imgElement = document.getElementById('glitch-img');
+            if(imgElement){
+                imgElement.onclick = function() {imgElement.remove()};
+            }
+
+            const soundElement = document.getElementById('sound-img');
+            if(soundElement){
+                soundElement.onclick = function() {soundElement.remove()};
+            }
         });
 
 
