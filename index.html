@@ -116,21 +116,11 @@
     </style>
     <script>
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'source/plik.txt', true);
-        xhr.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                let zmienna = this.responseText;
-                console.log(zmienna);
-            }
-        };
-        xhr.send();
 
 
         document.addEventListener("DOMContentLoaded", function () { // po załadowaniu dokumentu
             const selectElement = document.getElementById('hidden-textarea');
 
-            selectElement.addEventListener('input', (event) => {
 
                 // Get the container element
                 const glitchHeaderContainer = document.getElementById('glitch-header-container');
@@ -142,7 +132,8 @@
 
                 debugger;
 
-                let text = `${event.target.value}`;
+                let text =  document.querySelector('#hidden-text').textContent;
+
                 let arrayText = text.split('\n');
 
                 arrayText.forEach(async (text) => {
@@ -166,7 +157,6 @@
                     headerElement.setAttribute("data-text", text);
 
                 });
-            });
 
 
             const imgElement = document.getElementById('glitch-img');
@@ -212,6 +202,10 @@
         <img src='source/img/sound.gif' style="width: 60%;" alt="">
     </div>
 
+
+    <div id="hidden-text" style="display: none;">
+        This is some hidden text
+    </div>
 
     <textarea id="hidden-textarea" style="z-index: 1000;" spellcheck="false"></textarea>
 </main>
